@@ -5,9 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class Burger : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> _ingredients;
+    [SerializeField] private Transform _collector;
 
     private BoxCollider _boxCollider;
+    private bool _isCheeseAdded = false;
+
+    public bool IsCheeseAdded => _isCheeseAdded;
 
     public BoxCollider BoxCollider => _boxCollider;
     // Start is called before the first frame update
@@ -29,7 +32,9 @@ public class Burger : MonoBehaviour
 
     public void AddIngredient(GameObject ingredient)
     {
-        _ingredients.Add(ingredient);
+        _isCheeseAdded = true;
+        GameObject newIngredient = Instantiate(ingredient, _collector.position, _collector.rotation);
+        newIngredient.transform.SetParent(transform);
     }
 }
 

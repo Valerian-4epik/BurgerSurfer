@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Collector : MonoBehaviour
+public class BurgerCollector : MonoBehaviour
 {
     [SerializeField] private Transform _collector;
     [SerializeField] private float _duration;
 
     private float _collectedBurgerSizeY;
+    private List<Burger> _burgers = new List<Burger>();
     //private Vector3 _targetRotation;
 
     //public event Action<float> Jump;
@@ -31,10 +32,19 @@ public class Collector : MonoBehaviour
             Debug.Log("Косание");
             Take(burger);
         }
+        else if(other.gameObject.TryGetComponent(out Gate gate))
+        {
+            foreach(Burger sandwich in _burgers)
+            {
+                if(!sandwich.IsCheeseAdded)
+                    sandwich.AddIngredient(gate.Ingredient);
+            }
+        }
     }
 
     private void Take(Burger burger)
     {
+        _burgers.Add(burger);
         burger.transform.SetParent(transform);
         _collectedBurgerSizeY = burger.BoxCollider.bounds.size.y;
         transform.position = transform.position + new Vector3(0, _collectedBurgerSizeY,0);
