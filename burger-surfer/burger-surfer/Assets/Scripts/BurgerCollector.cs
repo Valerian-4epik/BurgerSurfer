@@ -29,22 +29,26 @@ public class BurgerCollector : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent(out Burger burger))
         {
-            Debug.Log("Косание");
             Take(burger);
         }
         else if(other.gameObject.TryGetComponent(out Gate gate))
         {
             foreach(Burger sandwich in _burgers)
             {
-                if(!sandwich.IsCheeseAdded)
+                if(!sandwich.IsIngredientAdded)
                     sandwich.AddIngredient(gate.Ingredient);
             }
+        }
+        else if(other.gameObject.TryGetComponent(out Stickman stickman))
+        {
+            GiveBurger(stickman.transform);
         }
     }
 
     private void Take(Burger burger)
     {
         _burgers.Add(burger);
+        UpgradeCapability();
         burger.transform.SetParent(transform);
         _collectedBurgerSizeY = burger.BoxCollider.bounds.size.y;
         transform.position = transform.position + new Vector3(0, _collectedBurgerSizeY,0);
@@ -54,11 +58,28 @@ public class BurgerCollector : MonoBehaviour
         burger.OffCollider();
         //block.ChangeMaterial(_collectedBlockMaterial);
         MoveBlock(burger);
+        burger.ActivateRigids();
+    }
+
+    private void GiveBurger(Transform transform)    
+    {   
+        GameObject lastBurger = _burgers[_burgers.Count - 1].gameObject;
+        lastBurger.transform.SetParent(transform);
+        //stop
+        _burgers.Remove(_burgers[_burgers.Count - 1]);
     }
 
     private void MoveBlock(Burger burger)
     {  
         //burger.transform.DOLocalRotate(_targetRotation, _duration);
         burger.transform.DOLocalMove(_collector.transform.localPosition, _duration);
+    }
+
+    private void UpgradeCapability()
+    {
+        foreach(Burger burger in _burgers)
+        {
+            burger.IsIngredientAdded = false;
+        }
     }
 }
