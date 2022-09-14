@@ -7,6 +7,7 @@ public class BurgerCollector : MonoBehaviour
 {
     [SerializeField] private Transform _collector;
     [SerializeField] private float _duration;
+    [SerializeField] private Rigidbody _burgerSurfer;
 
     private float _collectedBurgerSizeY;
     private List<Burger> _burgers = new List<Burger>();
@@ -67,6 +68,7 @@ public class BurgerCollector : MonoBehaviour
         lastBurger.transform.SetParent(transform);
         //stop
         _burgers.Remove(_burgers[_burgers.Count - 1]);
+        _burgerSurfer.isKinematic = false;
     }
 
     private void MoveBlock(Burger burger)
