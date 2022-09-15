@@ -1,18 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Stickman : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private bool _isBurgerEnough = false;
 
-    // Update is called once per frame
-    void Update()
+    public Action OnGetBurger;
+
+    public void GetBurger()
     {
-        
+        _isBurgerEnough = true;
+        OnGetBurger.Invoke();
     }
 }

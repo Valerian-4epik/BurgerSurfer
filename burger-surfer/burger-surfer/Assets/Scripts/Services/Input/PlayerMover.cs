@@ -10,6 +10,9 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private float _sideLerpSpeed;
 
     private Rigidbody _rigidbody;
+    private bool _canInteract = true;
+
+    public bool CanInteract { get { return _canInteract; } set { _canInteract = value; } }
 
     private void Start()
     {
@@ -22,7 +25,8 @@ public class PlayerMover : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            MoveSideways();
+            if (_canInteract)
+                MoveSideways();
         }
     }
 
