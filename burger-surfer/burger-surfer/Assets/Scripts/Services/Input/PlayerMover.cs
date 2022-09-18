@@ -11,6 +11,7 @@ public class PlayerMover : MonoBehaviour
 
     private Rigidbody _rigidbody;
     private bool _canInteract = true;
+    private bool _isPlaying = false;
 
     public bool CanInteract { get { return _canInteract; } set { _canInteract = value; } }
 
@@ -21,13 +22,24 @@ public class PlayerMover : MonoBehaviour
 
     private void Update()
     {
-        MoveForward();
+        if (Input.GetKey(KeyCode.B))
+            Debug.Log(gameObject.GetComponent<BurgerCollector>().BurgersPrice());
 
-        if (Input.GetMouseButton(0))
+        if (_isPlaying)
         {
-            if (_canInteract)
-                MoveSideways();
-        }
+            MoveForward();
+
+            if (Input.GetMouseButton(0))
+            {
+                if (_canInteract)
+                    MoveSideways();
+            }
+        }       
+    }
+
+    public void ActiveMovement()
+    {
+        _isPlaying = true;
     }
 
     private void MoveForward()

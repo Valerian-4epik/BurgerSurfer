@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5914969484926187232}
   - component: {fileID: 4302150530168901120}
   - component: {fileID: -9007265491054}
+  - component: {fileID: -649920731373603440}
   m_Layer: 0
   m_Name: Beef
   m_TagString: Untagged
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3630690647763448937, guid: 581c2184c5816124e8c069b760d36e30, type: 3}
+  - {fileID: 2100000, guid: b02b67efb80801b44930a669cd2d5b99, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,3 +113,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
+--- !u!114 &-649920731373603440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2582109653664919661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecbdae3c6767db048bc20307cd253377, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nameAndPrice: 6

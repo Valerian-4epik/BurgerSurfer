@@ -25,6 +25,8 @@ public class BurgerCollector : MonoBehaviour
     //{
     //    _character.BlockCollected -= Take;
     //}
+    
+    //€ не добавл€ю бургер со старта
 
     public void OnTriggerEnter(Collider other)
     {
@@ -89,6 +91,18 @@ public class BurgerCollector : MonoBehaviour
             _burgers.Remove(_burgers[_burgers.Count - 1]);
             //_burgerSurfer.isKinematic = false;
         }
+    }
+
+    public int BurgersPrice()
+    {
+        int sum = 0;
+
+        foreach(Burger burger in _burgers)
+        {
+            sum += burger.BurgerPrice();
+        }
+
+        return sum;
     }
 
     private void MoveBlock(Burger burger)
