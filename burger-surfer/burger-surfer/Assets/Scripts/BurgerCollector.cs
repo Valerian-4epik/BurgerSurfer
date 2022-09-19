@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 public class BurgerCollector : MonoBehaviour
 {
@@ -11,22 +12,8 @@ public class BurgerCollector : MonoBehaviour
 
     private float _collectedBurgerSizeY;
     private List<Burger> _burgers = new List<Burger>();
-    //private Vector3 _targetRotation;
 
-    //public event Action<float> Jump;
-
-    //private void OnEnable()
-    //{
-    //    _targetRotation = Vector3.zero;
-    //    _character.BlockCollected += Take;
-    //}
-
-    //private void OnDisable()
-    //{
-    //    _character.BlockCollected -= Take;
-    //}
-    
-    //€ не добавл€ю бургер со старта
+    public Action<int> OnSellBurger;
 
     public void OnTriggerEnter(Collider other)
     {
@@ -46,6 +33,7 @@ public class BurgerCollector : MonoBehaviour
         {
             if (_burgers.Count > 1)
             {
+                OnSellBurger.Invoke(_burgers[_burgers.Count - 1].BurgerPrice());
                 GiveBurger(stickman.transform);
                 stickman.GetBurger();
             }

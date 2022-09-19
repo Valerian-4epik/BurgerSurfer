@@ -4,10 +4,10 @@ using UnityEngine;
 
 public enum IngredientNames
 {
-    Cheese = 2,
-    Tomato = 1,
+    Cheese = 3,
+    Tomato = 2,
     Onion = 1,
-    Bacon = 2,
+    Bacon = 4,
     Beef = 6,
 }
 
@@ -27,7 +27,7 @@ public class Ingredient : MonoBehaviour
         _name = ingredientNames.ToString();
     }
 
-    private void Start()
+    private void Awake()
     {
         _price = (int)_nameAndPrice;
         _name = _nameAndPrice.ToString();

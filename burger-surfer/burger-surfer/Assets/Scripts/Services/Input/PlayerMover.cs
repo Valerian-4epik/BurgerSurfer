@@ -22,8 +22,8 @@ public class PlayerMover : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.B))
-            Debug.Log(gameObject.GetComponent<BurgerCollector>().BurgersPrice());
+        //if (Input.GetKey(KeyCode.B))
+           //Debug.Log(gameObject.GetComponent<BurgerCollector>().BurgersPrice());
 
         if (_isPlaying)
         {
@@ -40,6 +40,12 @@ public class PlayerMover : MonoBehaviour
     public void ActiveMovement()
     {
         _isPlaying = true;
+    }
+
+    public void StopMovement()
+    {
+        _isPlaying = false;
+        _rigidbody.constraints = RigidbodyConstraints.FreezePositionX;
     }
 
     private void MoveForward()

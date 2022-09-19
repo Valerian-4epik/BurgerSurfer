@@ -21,11 +21,7 @@ public class Burger : MonoBehaviour
     {
         Ingredient startIngredient = new Ingredient(IngredientNames.Beef);
         _boxCollider = GetComponent<BoxCollider>();
-        _ingredients.Add(startIngredient);
-        Debug.Log(_ingredients.Count);
-        Debug.Log(_ingredients[0].Price);
-        Debug.Log(_ingredients[0].Name);
-        
+        _ingredients.Add(startIngredient);        
     }
 
     // Update is called once per frame
@@ -51,16 +47,14 @@ public class Burger : MonoBehaviour
         BoxCollider.enabled = false;
     }
 
-    public void AddIngredient(GameObject ingredient)
+    public void AddIngredient(Ingredient ingredient)
     {
         _isIngredientAdded = true;
-        GameObject newIngredient = Instantiate(ingredient, _collector.position, _collector.rotation);
+        GameObject newIngredient = Instantiate(ingredient.gameObject, _collector.position, _collector.rotation);
         newIngredient.transform.SetParent(transform);
         float _collectedIngredientSizeY = newIngredient.GetComponent<BoxCollider>().bounds.size.y;
         _topBun.transform.position = _topBun.transform.position + new Vector3(0, _collectedIngredientSizeY, 0);
-        _ingredients.Add(ingredient.GetComponent<Ingredient>());
-      
-        //Debug.Log(_collectedIngredientSizeY);
+        _ingredients.Add(newIngredient.GetComponent<Ingredient>());
     }
 
     public void ActivateRigids()

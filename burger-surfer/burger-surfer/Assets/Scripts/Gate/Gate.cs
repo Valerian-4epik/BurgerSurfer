@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Gate : MonoBehaviour
 {
-    [SerializeField] private GameObject _ingredient;
+    [SerializeField] private Ingredient _ingredient;
 
-    public GameObject Ingredient => _ingredient;
+    public Ingredient Ingredient => _ingredient;
 }

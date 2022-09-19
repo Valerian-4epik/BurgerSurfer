@@ -14,4 +14,9 @@ public class Stickman : MonoBehaviour
         _isBurgerEnough = true;
         OnGetBurger.Invoke();
     }
+
+    public void BuyBurger()
+    {
+
+    }
 }
