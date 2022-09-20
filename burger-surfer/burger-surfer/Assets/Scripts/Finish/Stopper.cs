@@ -9,7 +9,6 @@ public class Stopper : MonoBehaviour
         if(other.TryGetComponent(out PlayerMover player))
         {
             player.StopMovement();
-            Debug.Log("Есть косание");
         }
     }
 }
