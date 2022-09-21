@@ -4,8 +4,4 @@ using UnityEngine;
 
 public class cube : MonoBehaviour
 {
-    private void OnEnable()
-    {
-        
-    }
 }
