@@ -35,9 +35,7 @@ public class RoadGenerator : MonoBehaviour
             }
             
             var road = Instantiate(GetRandomPart(), position, Quaternion.identity);
-            _pathWidth = road.gameObject.GetComponent<BoxCollider>().bounds.size.x;
-            Debug.Log(_pathWidth);
-            
+            _pathWidth = road.GetComponent<BoxCollider>().bounds.size.x;
             road.transform.SetParent(transform);
             _road.Add(road);
         }
