@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5005448205803438147}
+  - component: {fileID: 5943981230600772308}
   m_Layer: 6
   m_Name: GateSpawn
   m_TagString: Untagged
@@ -24,9 +25,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2928413121233235931}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2.53}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5943981230600772308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2928413121233235931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de6902e4effe30048b9599c527c55013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gates:
+  - {fileID: -7207007491843413707, guid: 5813cf1b50487954eb2dfa8f9378ba02, type: 3}
+  - {fileID: 8902946492465172592, guid: 5b705e5249cceb74ea5a27760e14b19e, type: 3}
+  - {fileID: -6494600964971263107, guid: e9ca3b7e34cf8fc4c9815dbff28ee2d6, type: 3}
+  - {fileID: 3296946480990246564, guid: 396494af24fa8d342b2b96794eea9d99, type: 3}
+  - {fileID: 8771351164302194383, guid: c74bcfa61491ddc40b4fea5efeb45ac0, type: 3}

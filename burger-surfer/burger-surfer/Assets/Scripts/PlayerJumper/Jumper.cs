@@ -16,6 +16,7 @@ public class Jumper : MonoBehaviour
             player.gameObject.transform.position = player.gameObject.transform.position + new Vector3(0, height, 0);
             player.gameObject.GetComponent<PlayerMover>().CanInteract = false;
             _table.Player = player;
+            gameObject.GetComponent<BoxCollider>().enabled = false;
         }
     }
 }

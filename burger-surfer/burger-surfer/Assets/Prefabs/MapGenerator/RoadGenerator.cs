@@ -5,6 +5,7 @@ using Random = System.Random;
 
 public class RoadGenerator : MonoBehaviour
 {
+    [SerializeField] private GameObject _startPath;
     [SerializeField] private List<GameObject> _firstPath;
     [SerializeField] private List<GameObject> _secondPath;
     [SerializeField] private List<GameObject> _thirdPath;
@@ -19,9 +20,11 @@ public class RoadGenerator : MonoBehaviour
     //private Vector3 _finishRotation = new Vector3(0,180,0);
     private float _pathWidth;
     private Random _randomPath = new Random();
+    private Vector3 _width;
 
     private void Start()
     {
+        _roadPath.Add(_startPath);
         _roadPath.Add(GetRandomPart(_firstPath));
         _roadPath.Add(GetRandomPart(_secondPath));
         _roadPath.Add(GetRandomPart(_thirdPath));
@@ -38,19 +41,19 @@ public class RoadGenerator : MonoBehaviour
 
         for (int i = 0; i < _roadPath.Count; i++)
         {
-            Vector3 width = new Vector3(_pathWidth, 0, 0);
-            
+            _width = new Vector3(_pathWidth, 0, 0);
+
             if (_road.Count > 0)
-            {
-                position = _road[_road.Count - 1].transform.position + width;
-            }
+                position = _road[_road.Count - 1].transform.position + _width;
             
             var road = Instantiate(_roadPath[i], position, Quaternion.identity);
             _pathWidth = road.GetComponent<BoxCollider>().bounds.size.x;
             road.transform.SetParent(transform);
             _road.Add(road);
         }
-        //GameObject finish = Instantiate(_finish, position + finishWidth, Quaternion.Euler(_finishRotation), transform);
+        
+        position = _road[_road.Count - 1].transform.position + _width/2;
+        GameObject finish = Instantiate(_finish, position, Quaternion.identity);
     }
 
     private GameObject GetRandomPart(List<GameObject> list)
