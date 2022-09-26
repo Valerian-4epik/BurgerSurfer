@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2846026775812445383
+--- !u!1001 &2877151468890229177
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3840085982116838106, guid: b1f990a07f8832343a68e6d3161ba475, type: 3}
       propertyPath: m_Name
-      value: Burger
+      value: OnlyBeef
       objectReference: {fileID: 0}
     - target: {fileID: 4467968262964486240, guid: b1f990a07f8832343a68e6d3161ba475, type: 3}
       propertyPath: m_RootOrder
