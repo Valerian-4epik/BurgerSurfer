@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1106256555730376069}
   - component: {fileID: 1953078188123262303}
   - component: {fileID: 6442734835844224867}
-  - component: {fileID: 6123019504168569661}
   m_Layer: 0
   m_Name: rightBlock
   m_TagString: Untagged
@@ -82,19 +81,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6123019504168569661
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2006658462262274434}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3033249132775128533
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,7 +92,6 @@ GameObject:
   - component: {fileID: 5190998211794427596}
   - component: {fileID: 1232049765624567836}
   - component: {fileID: 5352150997130098055}
-  - component: {fileID: 7168802215966117293}
   m_Layer: 0
   m_Name: leftBlock
   m_TagString: Untagged
@@ -177,19 +162,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7168802215966117293
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3033249132775128533}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3047042361796475040
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +207,6 @@ GameObject:
   - component: {fileID: 2887883725655726580}
   - component: {fileID: 5760845039501174267}
   - component: {fileID: 4243551302863712951}
-  - component: {fileID: 4726204805919483019}
   m_Layer: 0
   m_Name: CenterBlock
   m_TagString: Untagged
@@ -311,19 +282,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4726204805919483019
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6251028688712422567}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6549845181910985586
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,6 +374,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5387556921565580411}
   - component: {fileID: 8771351164302194383}
+  - component: {fileID: 547306808005174237}
   m_Layer: 0
   m_Name: TomatoGate
   m_TagString: Untagged
@@ -450,4 +409,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1871da3f9b82f2346b897616c668ee9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ingredient: {fileID: 0}
+  _ingredient: {fileID: -5828497310240152983, guid: 5ce1522c9f7b61744851ca5215b7ac61, type: 3}
+--- !u!65 &547306808005174237
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8832765892700934336}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 10, z: 4.67}
+  m_Center: {x: 0, y: 5, z: 0.69}

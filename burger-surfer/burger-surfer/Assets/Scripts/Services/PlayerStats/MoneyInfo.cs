@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,11 @@ public class MoneyInfo : MonoBehaviour
         _player.OnSellBurger -= AddMoney;
     }
 
+    private void Awake()
+    {
+        _playerMoney = SaveProgress.MoneyBalance;
+    }
+
     void Start()
     {
         ShowMoney();
@@ -29,6 +35,7 @@ public class MoneyInfo : MonoBehaviour
     {
         _playerMoney += value; 
         ShowMoney();
+        SaveProgress.MoneyBalance = _playerMoney;
     }
 
     private void ShowMoney()

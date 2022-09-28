@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class Table : MonoBehaviour
 {
-    [SerializeField] private Stickman _lastStickman;
-    [SerializeField] private List<Stickman> _stickmans;
-
     private BurgerCollector _player;
 
     public BurgerCollector Player { set { _player = value; } }
@@ -16,18 +13,8 @@ public class Table : MonoBehaviour
     {
       if(other.TryGetComponent(out BurgerCollector player))
         {
-            DisableEverything();
+            ActiveMovment();
         }  
-    }
-
-    private void OnEnable()
-    {
-        _lastStickman.OnGetBurger += ActiveMovment;
-    }
-
-    private void OnDisable()
-    {
-        _lastStickman.OnGetBurger -= ActiveMovment;
     }
 
     private void ActiveMovment()
@@ -35,13 +22,13 @@ public class Table : MonoBehaviour
         _player.gameObject.GetComponent<PlayerMover>().CanInteract = true;
     }
 
-    private void DisableEverything()
-    {
-        gameObject.GetComponent<BoxCollider>().enabled = false;
-
-        foreach(Stickman stickman in _stickmans)
-        {
-            stickman.gameObject.GetComponent<BoxCollider>().enabled = false;
-        }
-    }
+    // private void DisableEverything()
+    // {
+    //     gameObject.GetComponent<BoxCollider>().enabled = false;
+    //
+    //     foreach(Stickman stickman in _stickmans)
+    //     {
+    //         stickman.gameObject.GetComponent<BoxCollider>().enabled = false;
+    //     }
+    // }
 }

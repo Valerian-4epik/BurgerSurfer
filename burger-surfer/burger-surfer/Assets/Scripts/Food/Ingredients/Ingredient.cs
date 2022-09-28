@@ -1,14 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public enum IngredientNames
 {
-    Cheese = 3,
-    Tomato = 2,
+    Cheese = 5,
+    Tomato = 4,
     Onion = 1,
-    Bacon = 4,
-    Beef = 6,
+    Bacon = 7,
+    Beef = 8,
+    Cucumber = 3,
+    Egg = 6,
+    Lettuce = 2,
 }
 
 public class Ingredient : MonoBehaviour

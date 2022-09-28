@@ -375,7 +375,6 @@ GameObject:
   - component: {fileID: 6107827583103832755}
   - component: {fileID: -6494600964971263107}
   - component: {fileID: 8959236457160405391}
-  - component: {fileID: 8959236457160405390}
   m_Layer: 0
   m_Name: CheeseGate
   m_TagString: Untagged
@@ -392,7 +391,7 @@ Transform:
   m_GameObject: {fileID: 7247249897307606536}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.65, z: 0.79}
+  m_LocalScale: {x: 0.5, y: 0.6, z: 0.79}
   m_Children:
   - {fileID: 4977814498227590742}
   m_Father: {fileID: 0}
@@ -424,16 +423,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 9.96, z: 4.4}
   m_Center: {x: 0, y: 5.18, z: 0.27}
---- !u!114 &8959236457160405390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7247249897307606536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1871da3f9b82f2346b897616c668ee9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _ingredient: {fileID: -3251951855618860182, guid: f1a413b9d7cee894caf5e7cacc03a578, type: 3}

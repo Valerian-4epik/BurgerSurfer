@@ -5,18 +5,11 @@ using UnityEngine;
 
 public class Stickman : MonoBehaviour
 {
-    private bool _isBurgerEnough = false;
-
-    public Action OnGetBurger;
-
+    [SerializeField] private ParticleSystem _money;
+    
     public void GetBurger()
     {
-        _isBurgerEnough = true;
-        OnGetBurger.Invoke();
-    }
-
-    public void BuyBurger()
-    {
-
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+        _money.Play();
     }
 }
