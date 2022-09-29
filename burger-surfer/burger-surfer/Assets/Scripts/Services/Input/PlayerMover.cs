@@ -8,11 +8,19 @@ public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _rightSpeed;
     [SerializeField] private float _sideLerpSpeed;
+    [SerializeField] private GameObject _nextLevelPanel;
 
     private Rigidbody _rigidbody;
     private bool _canInteract = true;
     private bool _isPlaying = false;
-
+    private Transform _checkPointPosition;
+    private float _duration = 5;
+    
+    public Transform CheckPointPosition
+    {
+        set { _checkPointPosition = value;  }
+    }
+    
     public bool CanInteract { get { return _canInteract; } set { _canInteract = value; } }
 
     private void Start()
@@ -22,9 +30,6 @@ public class PlayerMover : MonoBehaviour
 
     private void Update()
     {
-        //if (Input.GetKey(KeyCode.B))
-           //Debug.Log(gameObject.GetComponent<BurgerCollector>().BurgersPrice());
-
         if (_isPlaying)
         {
             MoveForward();
@@ -36,7 +41,13 @@ public class PlayerMover : MonoBehaviour
             }
         }       
     }
-
+    
+    public void MoveToCheckpoint()
+    {
+        transform.DOMoveX(_checkPointPosition.position.x, _duration);
+        StartCoroutine(ActiveNextButton(_duration));
+    }
+    
     public void ActiveMovement()
     {
         _isPlaying = true;
@@ -53,6 +64,12 @@ public class PlayerMover : MonoBehaviour
         _rigidbody.velocity = Vector3.right * _rightSpeed;
     }
 
+    private IEnumerator ActiveNextButton (float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        _nextLevelPanel.SetActive(true);
+    }
+
     private void MoveSideways()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -60,8 +77,10 @@ public class PlayerMover : MonoBehaviour
 
         if(Physics.Raycast(ray, out hit, 100))
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y, hit.point.z),
+            var position = transform.position;
+            position = Vector3.Lerp(position, new Vector3(position.x, position.y, hit.point.z),
                 _sideLerpSpeed * Time.deltaTime);
+            transform.position = position;
         }
     }
 }

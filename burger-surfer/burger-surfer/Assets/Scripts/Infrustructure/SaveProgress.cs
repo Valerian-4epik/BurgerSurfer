@@ -6,7 +6,12 @@ public static class SaveProgress
 {
     public static int MoneyBalance
     {
-        get => PlayerPrefs.GetInt("MoneyBalance");
-        set => PlayerPrefs.SetInt("MoneyBalance", value);
+        get => PlayerPrefs.GetInt(nameof(MoneyBalance));
+        set => PlayerPrefs.SetInt(nameof(MoneyBalance), value);
+    }
+
+    public static bool HasSave(string name)
+    {
+        return PlayerPrefs.HasKey(name);
     }
 }

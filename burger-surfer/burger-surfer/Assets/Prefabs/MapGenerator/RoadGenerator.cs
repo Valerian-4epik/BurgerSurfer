@@ -6,6 +6,8 @@ using Random = System.Random;
 public class RoadGenerator : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
+    [SerializeField] private Canvas _canvas;
+    [SerializeField] private MoneyInfo _moneyInfo;
     [SerializeField] private GameObject _startPath;
     [SerializeField] private List<GameObject> _firstPath;
     [SerializeField] private List<GameObject> _secondPath;
@@ -56,7 +58,9 @@ public class RoadGenerator : MonoBehaviour
         position = _road[_road.Count - 1].transform.position + _width/2;
         GameObject finish = Instantiate(_finish, position, Quaternion.identity);
         finish.transform.SetParent(transform);
-        finish.GetComponentInChildren<Stopper>().GetCamera(_camera);
+        finish.GetComponentInChildren<FinishPoint>().GetCamera(_camera);
+        finish.GetComponentInChildren<FinishPoint>().GetCanvas(_canvas);
+        finish.GetComponentInChildren<FinishPoint>().GetMoneyInfo(_moneyInfo);
     }
 
     private GameObject GetRandomPart(List<GameObject> list)

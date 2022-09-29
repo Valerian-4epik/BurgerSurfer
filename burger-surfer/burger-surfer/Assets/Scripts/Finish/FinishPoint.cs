@@ -2,19 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stopper : MonoBehaviour
+public class FinishPoint : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> _customers;
+    [SerializeField] private List<Customer> _customers;
+    [SerializeField] private Transform _checkpoint;
 
     private Camera _camera;
     private Canvas _mainCanvas;
-    
+    private MoneyInfo _playerMoney;
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent(out PlayerMover player))
         {
             player.StopMovement();
             ActiveCustomers();
+            _mainCanvas.gameObject.GetComponent<MainCanvas>().ActiveButton();
+            player.CheckPointPosition = _checkpoint;
         }
     }
 
@@ -22,12 +26,23 @@ public class Stopper : MonoBehaviour
     {
         _camera = camera;
     }
+    
+    public void GetCanvas(Canvas canvas)
+    {
+        _mainCanvas = canvas;
+    }
+
+    public void GetMoneyInfo(MoneyInfo playerMoney)
+    {
+        _playerMoney = playerMoney;
+    }
 
     private void ActiveCustomers()
     {
-        foreach (GameObject customer in _customers)
+        foreach (Customer customer in _customers)
         {
-            customer.SetActive(true);
+            customer.gameObject.SetActive(true);
+            customer.GetMoneyInfo(_playerMoney);
         }
     }
 
