@@ -9,6 +9,19 @@ public class Stickman : MonoBehaviour
     
     public void GetBurger()
     {
+        ExplosionMoney();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.TryGetComponent(out Burger burger))
+        {
+            ExplosionMoney();
+        }
+    }
+
+    private void ExplosionMoney()
+    {
         gameObject.GetComponent<BoxCollider>().enabled = false;
         _money.Play();
     }

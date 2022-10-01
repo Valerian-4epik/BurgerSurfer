@@ -55,12 +55,12 @@ public class RoadGenerator : MonoBehaviour
             _road.Add(road);
         }
         
-        position = _road[_road.Count - 1].transform.position + _width/2;
-        GameObject finish = Instantiate(_finish, position, Quaternion.identity);
-        finish.transform.SetParent(transform);
-        finish.GetComponentInChildren<FinishPoint>().GetCamera(_camera);
-        finish.GetComponentInChildren<FinishPoint>().GetCanvas(_canvas);
-        finish.GetComponentInChildren<FinishPoint>().GetMoneyInfo(_moneyInfo);
+        // position = _road[_road.Count - 1].transform.position + _width/2;
+        // GameObject finish = Instantiate(_finish, position, Quaternion.identity);
+        // finish.transform.SetParent(transform);
+        // finish.GetComponentInChildren<FinishPoint>().GetCamera(_camera);
+        // finish.GetComponentInChildren<FinishPoint>().GetCanvas(_canvas);
+        // finish.GetComponentInChildren<FinishPoint>().GetMoneyInfo(_moneyInfo);
     }
 
     private GameObject GetRandomPart(List<GameObject> list)

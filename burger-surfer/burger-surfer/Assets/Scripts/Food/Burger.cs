@@ -55,6 +55,13 @@ public class Burger : MonoBehaviour
         float _collectedIngredientSizeY = newIngredient.GetComponent<BoxCollider>().bounds.size.y;
         _topBun.transform.position = _topBun.transform.position + new Vector3(0, _collectedIngredientSizeY, 0);
         _ingredients.Add(newIngredient.GetComponent<Ingredient>());
+        _bodies.Add(newIngredient.GetComponent<Rigidbody>()); 
+        //newIngredient.GetComponent<Ingredient>().PlayScaleUpAnimation();
+    }
+    
+    public void PlayScaleUpAnimation()
+    {
+        gameObject.GetComponent<Animation>().Play();
     }
 
     public void ActivateRigids()
@@ -64,5 +71,12 @@ public class Burger : MonoBehaviour
             rigidbody.isKinematic = false;
         }
     }
-}
 
+    public void DisableRigids()
+    {
+        foreach(Rigidbody rigidbody in _bodies)
+        {
+            rigidbody.isKinematic = true;
+        }
+    }
+}

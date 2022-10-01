@@ -9,8 +9,10 @@ public class MoneyInfo : MonoBehaviour
 {
     [SerializeField] private TMP_Text _moneyView;
     [SerializeField] private BurgerCollector _player;
+    [SerializeField] private TMP_Text _currentLevelView;
 
-    int _playerMoney;
+    private int _playerMoney;
+    private int _currentLevel = 1;
 
     private void OnEnable()
     {
@@ -24,12 +26,14 @@ public class MoneyInfo : MonoBehaviour
 
     private void Awake()
     {
-        _playerMoney = SaveProgress.MoneyBalance;
+        //ES3AutoSaveMgr.Current.Load();
+        //_playerMoney = SaveProgress.MoneyBalance;
     }
 
     void Start()
     {
         ShowMoney();
+        ShowCurrentLevel();
     }
 
     public void SpendMoney(int value, out bool successful)
@@ -40,7 +44,7 @@ public class MoneyInfo : MonoBehaviour
             _playerMoney -= value;
         
         ShowMoney();
-        SaveProgress.MoneyBalance = _playerMoney;
+        //SaveProgress.MoneyBalance = _playerMoney;
     }
 
     public bool IsEnoughMoney(int value)
@@ -48,15 +52,25 @@ public class MoneyInfo : MonoBehaviour
         return _playerMoney >= value;
     }
 
+    public void AddLevel()
+    {
+        _currentLevel++;
+    }
+
     private void AddMoney(int value)
     {
         _playerMoney += value; 
         ShowMoney();
-        SaveProgress.MoneyBalance = _playerMoney;
+        //SaveProgress.MoneyBalance = _playerMoney;
     }
 
     private void ShowMoney()
     {
         _moneyView.text = _playerMoney.ToString();
+    }
+
+    private void ShowCurrentLevel()
+    {
+        _currentLevelView.text = "Level " + _currentLevel.ToString();
     }
 }

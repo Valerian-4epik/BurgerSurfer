@@ -7,6 +7,7 @@ public class SceneLoader : MonoBehaviour
 {
     public void RestartScene()
     {
+        ES3AutoSaveMgr.Current.Save();
         SceneManager.LoadScene(0);
     }
 }

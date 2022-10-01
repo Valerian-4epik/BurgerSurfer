@@ -6,10 +6,11 @@ public class FinishPoint : MonoBehaviour
 {
     [SerializeField] private List<Customer> _customers;
     [SerializeField] private Transform _checkpoint;
+    [SerializeField] Camera _camera;
+    [SerializeField] Canvas _mainCanvas;
+    [SerializeField] MoneyInfo _playerMoney;
 
-    private Camera _camera;
-    private Canvas _mainCanvas;
-    private MoneyInfo _playerMoney;
+    private BurgerCollector _player;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,30 +20,50 @@ public class FinishPoint : MonoBehaviour
             ActiveCustomers();
             _mainCanvas.gameObject.GetComponent<MainCanvas>().ActiveButton();
             player.CheckPointPosition = _checkpoint;
+            GetFinishCustomers(player.gameObject.GetComponent<BurgerCollector>());
+            _player = player.gameObject.GetComponent<BurgerCollector>();
+            _player.DisableAllBurgers();
         }
     }
 
-    public void GetCamera(Camera camera)
+    // public void GetCamera(Camera camera)
+    // {
+    //     _camera = camera;
+    // }
+    //
+    // public void GetCanvas(Canvas canvas)
+    // {
+    //     _mainCanvas = canvas;
+    // }
+    //
+    // public void GetMoneyInfo(MoneyInfo playerMoney)
+    // {
+    //     _playerMoney = playerMoney;
+    // }
+
+    public void AddCustomer(Customer customer)
     {
-        _camera = camera;
+        _player.AddFinishCustomers(customer);
     }
     
-    public void GetCanvas(Canvas canvas)
+    private void GetFinishCustomers(BurgerCollector collector)
     {
-        _mainCanvas = canvas;
-    }
-
-    public void GetMoneyInfo(MoneyInfo playerMoney)
-    {
-        _playerMoney = playerMoney;
+        foreach (Customer customer in _customers)
+        {
+            if (customer.IsBought)
+                collector.AddFinishCustomers(customer);
+        }
     }
 
     private void ActiveCustomers()
     {
         foreach (Customer customer in _customers)
         {
-            customer.gameObject.SetActive(true);
-            customer.GetMoneyInfo(_playerMoney);
+            if (!customer.IsBought)
+            {
+                customer.gameObject.SetActive(true);
+                customer.GetMoneyInfo(_playerMoney);    
+            }
         }
     }
 

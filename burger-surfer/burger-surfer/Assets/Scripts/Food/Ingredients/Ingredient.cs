@@ -31,6 +31,11 @@ public class Ingredient : MonoBehaviour
         _name = ingredientNames.ToString();
     }
 
+    public void PlayScaleUpAnimation()
+    {
+        gameObject.GetComponent<Animator>().SetTrigger("Active");
+    }
+
     private void Awake()
     {
         _price = (int)_nameAndPrice;
