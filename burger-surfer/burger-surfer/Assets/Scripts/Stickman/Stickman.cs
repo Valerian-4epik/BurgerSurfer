@@ -11,14 +11,7 @@ public class Stickman : MonoBehaviour
     {
         ExplosionMoney();
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.TryGetComponent(out Burger burger))
-        {
-            ExplosionMoney();
-        }
-    }
+    
 
     private void ExplosionMoney()
     {

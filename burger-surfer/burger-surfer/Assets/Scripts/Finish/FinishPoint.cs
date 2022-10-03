@@ -22,7 +22,8 @@ public class FinishPoint : MonoBehaviour
             player.CheckPointPosition = _checkpoint;
             GetFinishCustomers(player.gameObject.GetComponent<BurgerCollector>());
             _player = player.gameObject.GetComponent<BurgerCollector>();
-            _player.DisableAllBurgers();
+            player.gameObject.GetComponentInChildren<TrailRenderer>().enabled = false;
+            gameObject.GetComponent<BoxCollider>().enabled = false;
         }
     }
 
@@ -40,6 +41,16 @@ public class FinishPoint : MonoBehaviour
     // {
     //     _playerMoney = playerMoney;
     // }
+    public void DisableAllCustomers()
+    {
+        foreach (Customer customer in _customers)
+        {
+            if (!customer.IsBought)
+            {
+                customer.gameObject.SetActive(false);
+            }
+        }
+    }
 
     public void AddCustomer(Customer customer)
     {

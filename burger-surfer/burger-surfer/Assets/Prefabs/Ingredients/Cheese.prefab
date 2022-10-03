@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -2217265749466816466}
   - component: {fileID: 6265588946283243581}
   - component: {fileID: -3251951855618860182}
+  - component: {fileID: 9158593589810048379}
   m_Layer: 0
   m_Name: Cheese
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1445640306551316106}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.5, z: 1.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -114,7 +115,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 122
-  m_CollisionDetection: 2
+  m_CollisionDetection: 1
 --- !u!114 &-3251951855618860182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,3 +129,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nameAndPrice: 3
+--- !u!111 &9158593589810048379
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445640306551316106}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 9b25954e9dfb2ad48ad24f04d03a1cbc, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 9b25954e9dfb2ad48ad24f04d03a1cbc, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0

@@ -11,15 +11,16 @@ public class BurgerCollector : MonoBehaviour
     [SerializeField] private Transform _collector;
     [SerializeField] private float _duration;
     [SerializeField] private Rigidbody _burgerSurfer;
+    [SerializeField] private Transform _parentTransform;
 
     private float _collectedBurgerSizeY;
-    private float _burgerTravelTime = 0.5f;
+    private float _burgerTravelTime = 1f;
     private List<Burger> _burgers = new List<Burger>();
     private List<Customer> _finishCustomers = new List<Customer>();
 
     public List<Burger> Burgers => _burgers;
     public Action<int> OnSellBurger;
-
+    
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.TryGetComponent(out Burger burger))
@@ -45,20 +46,36 @@ public class BurgerCollector : MonoBehaviour
             }
             else
             {
-                
             }
         }
         else if (other.gameObject.TryGetComponent(out Cube cube))
         {
             if (!cube.IsBurgerFull)
             {
-                GiveBurger(cube.transform);
-                cube.gameObject.GetComponent<BoxCollider>().enabled = false;
                 cube.IsBurgerFull = true;
+                GiveBurger(_parentTransform);
+                cube.gameObject.GetComponent<BoxCollider>().enabled = false;
             }
         }
     }
 
+    private IEnumerator DistributionFinishBurgers()
+    {
+        foreach (Customer customer in _finishCustomers)
+        {
+            if (_burgers.Count > 0)
+            {
+                Burger lastBurger = _burgers[_burgers.Count - 1];
+                OnSellBurger.Invoke(lastBurger.BurgerPrice());
+                lastBurger.DisableRigids();
+                lastBurger.transform.DOMove(customer.TargetPosition.position, _burgerTravelTime);
+                GiveBurger(customer.gameObject.transform);
+            }
+
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+    
     public void AddFinishCustomers(Customer customer)
     {
         _finishCustomers.Add(customer);
@@ -68,7 +85,8 @@ public class BurgerCollector : MonoBehaviour
     {
         _burgers.Add(burger);
         UpgradeCapability();
-        burger.transform.SetParent(transform);
+        burger.transform.SetParent(transform, true);
+        burger.PlayScaleUpAnimation();
         _collectedBurgerSizeY = burger.BoxCollider.bounds.size.y;
         transform.position = transform.position + new Vector3(0, _collectedBurgerSizeY, 0);
         _collector.position = _collector.position - new Vector3(0, _collectedBurgerSizeY, 0);
@@ -79,34 +97,24 @@ public class BurgerCollector : MonoBehaviour
 
     public void GiveBurger(Transform transform)
     {
-        if (_burgers.Count > 1)
+        if (_burgers.Count > 0)
         {
             GameObject lastBurger = _burgers[_burgers.Count - 1].gameObject;
-            lastBurger.transform.SetParent(transform);
+            lastBurger.transform.SetParent(transform, true);
             _burgers.Remove(_burgers[_burgers.Count - 1]);
-            //_burgerSurfer.isKinematic = false;
         }
     }
 
     public void FeedAllFinishCustomers()
     {
-        if (_finishCustomers.Count > 0)
-        {
-            foreach (Customer customer in _finishCustomers)
-            {
-                GameObject lastBurger = _burgers[_burgers.Count - 1].gameObject;
-                OnSellBurger.Invoke(lastBurger.GetComponent<Burger>().BurgerPrice());
-                //lastBurger.GetComponent<Burger>().DisableRigids();
-                lastBurger.transform.DOMove(customer.TargetPosition.position, _burgerTravelTime);
-                GiveBurger(customer.gameObject.transform);
-            }
-        }
+        StartCoroutine(DistributionFinishBurgers());
     }
 
     public void DisableAllBurgers()
     {
         foreach (Burger burger in _burgers)
         {
+            burger.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             burger.DisableRigids();
         }
     }
@@ -115,19 +123,18 @@ public class BurgerCollector : MonoBehaviour
     {
         int sum = 0;
 
-        foreach(Burger burger in _burgers)
+        foreach (Burger burger in _burgers)
         {
             sum += burger.BurgerPrice();
         }
 
         return sum;
     }
-
+    
     private void MoveBlock(Burger burger)
     {
         //burger.transform.DOLocalRotate(_targetRotation, _duration);
         burger.transform.DOLocalMove(_collector.transform.localPosition, _duration);
-        
     }
 
     private void UpgradeCapability()

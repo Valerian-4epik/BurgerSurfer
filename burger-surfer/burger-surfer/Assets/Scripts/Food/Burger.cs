@@ -8,6 +8,7 @@ public class Burger : MonoBehaviour
     [SerializeField] private Transform _collector;
     [SerializeField] private GameObject _topBun;
     [SerializeField] private List<Rigidbody> _bodies = new List<Rigidbody>();
+    [SerializeField] private Animation _animation;
 
     private BoxCollider _boxCollider;
     private bool _isIngredientAdded = false;
@@ -51,6 +52,7 @@ public class Burger : MonoBehaviour
     {
         _isIngredientAdded = true;
         GameObject newIngredient = Instantiate(ingredient.gameObject, _collector.position, _collector.rotation);
+        newIngredient.GetComponent<Animation>().Play();
         newIngredient.transform.SetParent(transform);
         float _collectedIngredientSizeY = newIngredient.GetComponent<BoxCollider>().bounds.size.y;
         _topBun.transform.position = _topBun.transform.position + new Vector3(0, _collectedIngredientSizeY, 0);
@@ -61,7 +63,7 @@ public class Burger : MonoBehaviour
     
     public void PlayScaleUpAnimation()
     {
-        gameObject.GetComponent<Animation>().Play();
+        _animation.Play();
     }
 
     public void ActivateRigids()
@@ -74,6 +76,8 @@ public class Burger : MonoBehaviour
 
     public void DisableRigids()
     {
+        gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        
         foreach(Rigidbody rigidbody in _bodies)
         {
             rigidbody.isKinematic = true;

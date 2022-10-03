@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8665405169596776350}
   - component: {fileID: 8107490807563388103}
   - component: {fileID: -5141325703670957496}
+  - component: {fileID: 7668860343447495818}
   m_Layer: 0
   m_Name: Bacon
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2376875891035347495}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.5, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -114,7 +115,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 122
-  m_CollisionDetection: 2
+  m_CollisionDetection: 1
 --- !u!114 &-5141325703670957496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,3 +129,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nameAndPrice: 4
+--- !u!111 &7668860343447495818
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2376875891035347495}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 0d5264848112f0647adf11e978c9dd48, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 0d5264848112f0647adf11e978c9dd48, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0

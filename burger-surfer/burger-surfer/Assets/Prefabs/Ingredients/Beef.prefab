@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4302150530168901120}
   - component: {fileID: -9007265491054}
   - component: {fileID: -649920731373603440}
-  - component: {fileID: 7736621403365368533}
+  - component: {fileID: 4246123691671830592}
   m_Layer: 0
   m_Name: Beef
   m_TagString: Untagged
@@ -115,7 +115,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 122
-  m_CollisionDetection: 2
+  m_CollisionDetection: 1
 --- !u!114 &-649920731373603440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,23 +129,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nameAndPrice: 6
---- !u!95 &7736621403365368533
-Animator:
-  serializedVersion: 4
+--- !u!111 &4246123691671830592
+Animation:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2582109653664919661}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fc4e6d371451d69479efc6a2cab11465, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 15ae56019967d1b4181ffb014aa6ecc0, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 15ae56019967d1b4181ffb014aa6ecc0, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0

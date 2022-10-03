@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5566598378073761663}
   - component: {fileID: -7721349807565088676}
   - component: {fileID: -2067816066686361219}
+  - component: {fileID: 935402612226832289}
   m_Layer: 0
   m_Name: Lettuce
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 6325555992489716455}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.0014661503, y: 1.219, z: -2.352}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -128,3 +129,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 2
+--- !u!111 &935402612226832289
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6325555992489716455}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: fe3a74480c2305e4bb9a1a27b7d1b847, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: fe3a74480c2305e4bb9a1a27b7d1b847, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0

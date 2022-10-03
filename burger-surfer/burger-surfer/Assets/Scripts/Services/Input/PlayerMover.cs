@@ -9,13 +9,19 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private float _rightSpeed;
     [SerializeField] private float _sideLerpSpeed;
     [SerializeField] private GameObject _nextLevelPanel;
+    [SerializeField] private bool _isPlaying = false;
 
     private Rigidbody _rigidbody;
     private bool _canInteract = true;
-    private bool _isPlaying = false;
     private Transform _checkPointPosition;
-    private float _duration = 5;
-    
+    private float _finishSpeed = 8;
+
+    public float RightSpeed
+    {
+        get { return _rightSpeed; }
+        set { _rightSpeed = value; }
+    }
+
     public Transform CheckPointPosition
     {
         set { _checkPointPosition = value;  }
@@ -44,19 +50,20 @@ public class PlayerMover : MonoBehaviour
     
     public void MoveToCheckpoint()
     {
-        transform.DOMoveX(_checkPointPosition.position.x, _duration);
-        StartCoroutine(ActiveNextButton(_duration));
+        _rightSpeed = _finishSpeed;
+        ActiveMovement();
     }
     
     public void ActiveMovement()
     {
         _isPlaying = true;
+        _rigidbody.isKinematic = false;
     }
 
     public void StopMovement()
     {
         _isPlaying = false;
-        _rigidbody.constraints = RigidbodyConstraints.FreezePositionX;
+        _rigidbody.isKinematic = true;
     }
 
     private void MoveForward()
