@@ -10,6 +10,7 @@ public class Stickman : MonoBehaviour
     public void GetBurger()
     {
         ExplosionMoney();
+        gameObject.GetComponent<Animation>().Play();
     }
     
 

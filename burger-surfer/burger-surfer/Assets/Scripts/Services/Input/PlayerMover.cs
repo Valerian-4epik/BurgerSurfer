@@ -63,6 +63,7 @@ public class PlayerMover : MonoBehaviour
     public void StopMovement()
     {
         _isPlaying = false;
+        _canInteract = false;
         _rigidbody.isKinematic = true;
     }
 

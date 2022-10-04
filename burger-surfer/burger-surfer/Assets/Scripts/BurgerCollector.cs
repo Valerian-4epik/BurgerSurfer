@@ -41,7 +41,7 @@ public class BurgerCollector : MonoBehaviour
             if (_burgers.Count > 1)
             {
                 OnSellBurger.Invoke(_burgers[_burgers.Count - 1].BurgerPrice());
-                GiveBurger(stickman.transform);
+                GiveBurger(_parentTransform);
                 stickman.GetBurger();
             }
             else
@@ -50,12 +50,13 @@ public class BurgerCollector : MonoBehaviour
         }
         else if (other.gameObject.TryGetComponent(out Cube cube))
         {
-            if (!cube.IsBurgerFull)
+            cube.gameObject.GetComponent<BoxCollider>().enabled = false;
+            
+            if (!cube.IsStorageFull)
             {
-                cube.IsBurgerFull = true;
+                cube.IsStorageFull = true;
                 GiveBurger(_parentTransform);
-                cube.gameObject.GetComponent<BoxCollider>().enabled = false;
-            }
+            }   
         }
     }
 

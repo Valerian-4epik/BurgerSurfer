@@ -104,6 +104,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5509316326111208754, guid: b1f990a07f8832343a68e6d3161ba475, type: 3}
+      propertyPath: m_Mass
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509316326111208754, guid: b1f990a07f8832343a68e6d3161ba475, type: 3}
       propertyPath: m_Constraints
       value: 122
       objectReference: {fileID: 0}
@@ -116,12 +120,20 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5640382558891771702, guid: b1f990a07f8832343a68e6d3161ba475, type: 3}
+      propertyPath: m_Mass
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640382558891771702, guid: b1f990a07f8832343a68e6d3161ba475, type: 3}
       propertyPath: m_CollisionDetection
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7856279234700219246, guid: b1f990a07f8832343a68e6d3161ba475, type: 3}
       propertyPath: m_Drag
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7856279234700219246, guid: b1f990a07f8832343a68e6d3161ba475, type: 3}
+      propertyPath: m_Mass
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7856279234700219246, guid: b1f990a07f8832343a68e6d3161ba475, type: 3}
       propertyPath: m_CollisionDetection
