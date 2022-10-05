@@ -86,6 +86,7 @@ public class PlayerMover : MonoBehaviour
         if(Physics.Raycast(ray, out hit, 100))
         {
             var position = transform.position;
+            
             position = Vector3.Lerp(position, new Vector3(position.x, position.y, hit.point.z),
                 _sideLerpSpeed * Time.deltaTime);
             transform.position = position;

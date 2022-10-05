@@ -40,8 +40,10 @@ public class BurgerCollector : MonoBehaviour
         {
             if (_burgers.Count > 1)
             {
-                OnSellBurger.Invoke(_burgers[_burgers.Count - 1].BurgerPrice());
+                Burger lastBurger = _burgers[_burgers.Count - 1];
+                OnSellBurger.Invoke(lastBurger.BurgerPrice());
                 GiveBurger(_parentTransform);
+                lastBurger.gameObject.transform.DOMove(stickman._burgerPoint, 0.1f);
                 stickman.GetBurger();
             }
             else
