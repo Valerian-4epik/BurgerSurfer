@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MainCanvas : MonoBehaviour
+namespace Scripts.UI
 {
-    [SerializeField] private GameObject _serveButton;
-
-    public void ActiveButton()
+    public class MainCanvas : MonoBehaviour
     {
-        _serveButton.SetActive(true);
+        [SerializeField] private GameObject _serveButton;
+
+        public void ActiveButton()
+        {
+            _serveButton.SetActive(true);
+        }
     }
 }

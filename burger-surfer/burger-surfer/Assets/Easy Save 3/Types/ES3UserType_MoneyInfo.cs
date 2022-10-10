@@ -1,4 +1,5 @@
 using System;
+using Scripts.Services.PlayerStats;
 using UnityEngine;
 
 namespace ES3Types

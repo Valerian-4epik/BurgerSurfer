@@ -1,16 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using DG.Tweening;
+using UnityEngine;
 
-public class HandMoverYoYo : MonoBehaviour
+namespace Scripts.UI
 {
-    [SerializeField] private Vector3[] _points;
-
-    private float _duration = 2;
-
-    private void Start()
+    public class HandMoverYoYo : MonoBehaviour
     {
-        Tween tween = transform.DOPath(_points, _duration, PathType.Linear).SetLoops(-1, LoopType.Yoyo);
+        [SerializeField] private Vector3[] _points;
+
+        private float _duration = 2;
+
+        private void Start()
+        {
+            Tween tween = transform.DOPath(_points, _duration, PathType.Linear).SetLoops(-1, LoopType.Yoyo);
+        }
     }
 }
