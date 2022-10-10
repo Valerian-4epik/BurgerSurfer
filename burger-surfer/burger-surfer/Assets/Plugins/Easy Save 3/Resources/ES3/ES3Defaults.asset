@@ -32,7 +32,9 @@ MonoBehaviour:
     - Assembly-CSharp
     - Assembly-CSharp-firstpass
     - Cinemachine
+    - SimpleInput.Runtime
     - Hierarchy2.Runtime
+    - SimpleInput.Editor
     - Hierarchy2.Editor
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0

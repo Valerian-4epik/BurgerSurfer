@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.ProBuilder;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMover : MonoBehaviour
@@ -15,7 +16,10 @@ public class PlayerMover : MonoBehaviour
     private bool _canInteract = true;
     private Transform _checkPointPosition;
     private float _finishSpeed = 8;
+    public string horizontalAxis = "Horizontal";
+    private float inputHorizontal;
 
+    
     public float RightSpeed
     {
         get { return _rightSpeed; }
@@ -36,15 +40,14 @@ public class PlayerMover : MonoBehaviour
 
     private void Update()
     {
+        inputHorizontal =  SimpleInput.GetAxis(horizontalAxis);
+        
         if (_isPlaying)
         {
             MoveForward();
 
-            if (Input.GetMouseButton(0))
-            {
-                if (_canInteract)
-                    MoveSideways();
-            }
+            if (_canInteract) 
+                transform.position = new Vector3(transform.position.x,transform.position.y, SidewaysDirection(inputHorizontal));
         }       
     }
     
@@ -78,18 +81,22 @@ public class PlayerMover : MonoBehaviour
         _nextLevelPanel.SetActive(true);
     }
 
-    private void MoveSideways()
+    private float SidewaysDirection(float inputAxis)
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
+        float directionZ = transform.position.z;
+        var maxDistance = 4;
+        var minDistance = -4.5F;
 
-        if(Physics.Raycast(ray, out hit, 100))
-        {
-            var position = transform.position;
+        return Mathf.Clamp(directionZ - inputAxis * _sideLerpSpeed, minDistance, maxDistance);
+    }
+    
+    private void MoveSideways(float direction)
+    {
+        var position = transform.position;
             
-            position = Vector3.Lerp(position, new Vector3(position.x, position.y, hit.point.z),
+            position = Vector3.Lerp(position, new Vector3(position.x, position.y, -direction * _sideLerpSpeed),
                 _sideLerpSpeed * Time.deltaTime);
             transform.position = position;
-        }
+        
     }
 }

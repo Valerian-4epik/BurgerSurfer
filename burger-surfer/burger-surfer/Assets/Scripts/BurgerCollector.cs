@@ -62,22 +62,6 @@ public class BurgerCollector : MonoBehaviour
         }
     }
 
-    private IEnumerator DistributionFinishBurgers()
-    {
-        foreach (Customer customer in _finishCustomers)
-        {
-            if (_burgers.Count > 0)
-            {
-                Burger lastBurger = _burgers[_burgers.Count - 1];
-                OnSellBurger.Invoke(lastBurger.BurgerPrice());
-                lastBurger.DisableRigids();
-                lastBurger.transform.DOMove(customer.TargetPosition.position, _burgerTravelTime);
-                GiveBurger(customer.gameObject.transform);
-            }
-
-            yield return new WaitForSeconds(0.5f);
-        }
-    }
     
     public void AddFinishCustomers(Customer customer)
     {
@@ -154,5 +138,22 @@ public class BurgerCollector : MonoBehaviour
         //Vector3 задать силу по направлению
         gameObject.transform.position = new Vector3(surferPosition.x, surferPosition.y, 0);
         gameObject.GetComponent<PlayerMover>().CanInteract = true;
+    }
+    
+    private IEnumerator DistributionFinishBurgers()
+    {
+        foreach (Customer customer in _finishCustomers)
+        {
+            if (_burgers.Count > 0)
+            {
+                Burger lastBurger = _burgers[_burgers.Count - 1];
+                OnSellBurger.Invoke(lastBurger.BurgerPrice());
+                lastBurger.DisableRigids();
+                lastBurger.transform.DOMove(customer.TargetPosition.position, _burgerTravelTime);
+                GiveBurger(customer.gameObject.transform);
+            }
+
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 }

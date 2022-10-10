@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
@@ -29,20 +28,6 @@ public class FinishPoint : MonoBehaviour
         }
     }
 
-    // public void GetCamera(Camera camera)
-    // {
-    //     _camera = camera;
-    // }
-    //
-    // public void GetCanvas(Canvas canvas)
-    // {
-    //     _mainCanvas = canvas;
-    // }
-    //
-    // public void GetMoneyInfo(MoneyInfo playerMoney)
-    // {
-    //     _playerMoney = playerMoney;
-    // }
     public void DisableAllCustomers()
     {
         foreach (Customer customer in _customers)
