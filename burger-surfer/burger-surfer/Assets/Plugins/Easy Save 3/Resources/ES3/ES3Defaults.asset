@@ -33,6 +33,8 @@ MonoBehaviour:
     - Assembly-CSharp-firstpass
     - Cinemachine
     - SimpleInput.Runtime
+    - Agava.YandexGames
+    - Agava.YandexGames.Samples.Playtesting
     - Hierarchy2.Runtime
     - SimpleInput.Editor
     - Hierarchy2.Editor
